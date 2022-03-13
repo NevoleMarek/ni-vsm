@@ -23,7 +23,7 @@
 
 \author{Marek Nevole, Jan Novotný}
 \affiliation{ČVUT - FIT}
-\email{nevolmar@fit.cvut.cz, novot103@fit.cvut.cz}
+\email{\{nevolmar, novot103\}@fit.cvut.cz}
 
 \def\file#1{{\tt#1}}
 
@@ -51,7 +51,7 @@ Výsledkem těchto rovnic jsou názvy vybraných datových souborů. V našem p�
 \section{Úloha č.1}
 \textit{Z obou datových souborů načtěte texty k analýze. Pro každý text zvlášť odhadněte pravděpodobnosti znaků (symbolů včetně mezery), které se v textech vyskytují. Výsledné pravděpodobnosti graficky znázorněte.}\\
 
-Pokud mluvíme o prvním textu, myslíme text ze souboru \textbf{005.txt}, obdobně druhým textem máme na mysli text z \textbf{017.txt}. Část prvního textu, určená k analýze, obsahuje 5410 znaků vč. mezer. Druhý text obsahuje více znaků, konkrétně 6709. Částí k analýze je myšlen text bez prvního řádku.
+Pokud mluvíme o prvním textu, myslíme text ze souboru \textbf{005.txt} a náhodnou veličinu znaků značíme $ X_1 $, obdobně druhým textem máme na mysli text z \textbf{017.txt} a náhodnou veličinu znaků značíme $ X_2 $. Část prvního textu, určená k analýze, obsahuje 5410 znaků vč. mezer. Druhý text obsahuje více znaků, konkrétně 6709. Částí k analýze je myšlen text bez prvního řádku.
 
 Na obrázku \ref{fig:aprob} můžeme pozorovat překrývající se absolutní četnosti znaků obou textů. Rozdělění znaků je velice obdobné až na určitou odchylku určenou absolutním rozdílem počtu znaků textů. Nepřekvapivě je nejčastějším znakem mezera. Nejčastěji použitým znakem z abecedy je \textit{e}.
 
@@ -78,7 +78,7 @@ Pro následující úlohy, ve kterých budeme sestavovat optimální binární i
   H_2(X_2) &= 4.078 \text{ bitu}
 \end{align*}
 
-Hodnoty entropií splňují větu o maximalizaci entropie, která říka, že $H(X) \leq \log(|\chi|)$, což obě entropie splňují, jelikož pro oba texty je $\log(|\chi_1|) = \log(|\chi_2|) = 4.755$. Entropie jsou velice podobné, což odpovídá velice podobným relativním četnostem znaků.
+Hodnoty entropií splňují větu o maximalizaci entropie, která říka, že $H(X) \leq \log(|X|)$, což obě entropie splňují, jelikož pro oba texty je $\log(|X_1|) = \log(|X_2|) = 4.755$. Entropie jsou velice podobné, což odpovídá velice podobným relativním četnostem znaků.
 
 \noindent\rule{\columnwidth}{1pt}
 \begin{lstlisting}[language=Python]
@@ -121,7 +121,7 @@ Získaná kódová slova pro všechny znaky lze pozorovat v tabulce \ref{tab:cod
   \label{tab:codebook}
   \end{table}
 
-Algoritmus pro získání Huffmanova kódu jsme v rámci procvičení implementovali sami. Kvůli délce kódu zde popíšeme algoritmus pouze pseudokódem.
+Algoritmus pro získání Huffmanova kódu jsme v rámci procvičení implementovali sami. Kvůli délce kódu zde popíšeme algoritmus pouze slovně.
 
 \noindent\rule{\columnwidth}{1pt}
 \begin{enumerate}
