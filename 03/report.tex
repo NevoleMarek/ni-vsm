@@ -77,7 +77,7 @@ Maximálně věrohodným odhadem matice přechodu Markovského procesu je matice
 
 Dle typu Markovského procesu, tedy generace textu, jsme odhadli, že množina stavů je již nerozložitelná, tj. všechny dvojice symbolů jsou navzájem dosažitelné. Toto platí pro všechny stavy, tedy celý Markovský řetězec nazýváme nerozložitelný. Dále víme, že v řetězcích s konečným počtem stavů neexistují stavy trvalé nulové. Tedy platí, že všechny stavy v našem zkoumaném Markovském řetězci jsou trvalé nenulové. Také tvrdíme, že jsou aperiodické.
 
-Na základě předchozích vlastností a odhadů můžeme využít větu o existenci stacionárního rozdělení a konkrétně její druhý bod, který říká: \\
+Na základě předchozích vlastností a tvrzení můžeme využít větu o existenci stacionárního rozdělení a konkrétně její druhý bod, který říká: \\
 \textit{Jsou-li všechny stavy trvalé nenulové, stacionární rozdělení $ \bm{\pi} $ existuje a je jediné.}\\
 \textit{Jsou-li navíc všechny stavy aperiodické, platí}
 \begin{equation*}
@@ -85,7 +85,7 @@ Na základě předchozích vlastností a odhadů můžeme využít větu o exist
 \end{equation*}
 Na základě vlastností homogenního Markovského řetězce a vícekrokových pravděpodobností přechodu platí rovnost $ \bm{p}(n) = \bm{p}(0) \cdot \textbf{P}^n $. Tedy pro libovolné $ \bm{p}(0) $, splňující podmínky stacionárního rozdělení, získáme rozdělení $ \bm{\pi} $ následovně $ \bm{\pi} = \bm{p}(0) \cdot \textbf{P}^n $. Limitně pro $ n \to +\infty $ obsahuje matice $ \textbf{P}^n $ požadované rozdělení $ \bm{\pi} $ ve svých řádcích. Numericky je toto iterativní metoda, tedy provádíme výpočet do té doby, dokud nedosáhneme požadované přesnosti. Pro $ n = 10000 $ jsme dostali rozdělení, pro které platí $ \|\bm{\pi}\textbf{P}-\bm{\pi}\| < 10^{-15} $.
 
-Druhou metodou je využití lineární algebry, vlastností vlastní čísel a vektorů. $ \bm{\pi}\textbf{P}=\bm{\pi} /^T $ po transponování celé rovnice dostáváme $ \textbf{P}^T \bm{\pi}^T = \bm{\pi}^T $, což je velice podobné rovnici vlastních čísel $ \textbf{A}\bm{x} = \lambda \bm{x} $, kde $ \lambda = 1 $. Tedy hledaným rozdělením $ \bm{\pi} $ je vlastní vektor vlastního čísla rovného(nebo velice blízkého k) 1 přeškálovaný, aby platily podmínky $ \Sigma_{i \in S} \bm{\pi}_i = 1 $ a $ \forall i \in S: \bm{\pi}_i \geq 0 $. Takto získané rozdělení mělo normu od nulového vektoru srovnatelně malou jako rozdělení získané iterativní metodou, tedy $ \|\bm{\pi}\textbf{P}-\bm{\pi}\| < 10^{-15} $.
+Druhou metodou je využití lineární algebry, vlastností vlastních čísel a vlastních vektorů. $ \bm{\pi}\textbf{P}=\bm{\pi} /^T $ po transponování celé rovnice dostáváme $ \textbf{P}^T \bm{\pi}^T = \bm{\pi}^T $, což je velice podobné rovnici vlastních čísel $ \textbf{A}\bm{x} = \lambda \bm{x} $, kde $ \lambda = 1 $. Tedy hledaným rozdělením $ \bm{\pi} $ je vlastní vektor vlastního čísla rovného(nebo velice blízkého) 1, přeškálovaný, aby platily podmínky $ \Sigma_{i \in S} \bm{\pi}_i = 1 $ a $ \forall i \in S: \bm{\pi}_i \geq 0 $. Takto získané rozdělení mělo normu od nulového vektoru srovnatelně malou jako rozdělení získané iterativní metodou, tedy $ \|\bm{\pi}\textbf{P}-\bm{\pi}\| < 10^{-15} $.
 
 \section{Úloha č.3}
 \textit{Porovnejte rozdělení znaků  \textbf{druhého} textu se stacionárním rozdělením $ \bm{\pi} $, tj. na hladině významnosti 5\% otestujte hypotézu, že rozdělení znaků \textbf{druhého} testu se rovná rozdělení $ \bm{\pi} $ z předchozího bodu.}\\
@@ -100,7 +100,7 @@ Stacionární rozdělení $ \bm{\pi} $ a rozdělení znaků druhého textu lze p
 
 \begin{align*}
 \chi^2 &= 145.2\\
-\hat{p} &= 1.5 \times 10^-18\\
+\hat{p} &= 1.5 \cdot 10^{-18}\\
 \chi^2_{0.05,26} &= 38.8
 \end{align*}
 
