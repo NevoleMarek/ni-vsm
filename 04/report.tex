@@ -34,7 +34,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Úvod}
-Ve čtrtém úkolu z předmětu vybrané statistické metody jsme se zabývali Poissonovými procesy a systémy hromadné obsluhy. Za reprezentanta byl zvolen Marek Nevole.
+Ve čtvrtém úkolu z předmětu vybrané statistické metody jsme se zabývali Poissonovými procesy a systémy hromadné obsluhy. Za reprezentanta byl zvolen Marek Nevole.
 
 Úkol jsme vypracovali pomocí programovacího jazyka Python\footnote{python.org} v prostředí Jupyter Notebook\footnote{jupyter.org} s volně dostupnými knihovnami SciPy\footnote{scipy.org}, NumPy\footnote{numpy.org}, Seaborn\footnote{seaborn.pydata.org} a Matplotlib\footnote{matplotlib.org}.
 
@@ -52,7 +52,7 @@ Ve čtrtém úkolu z předmětu vybrané statistické metody jsme se zabývali P
 \section{Úloha č.1}
 \textit{Simulujte jednu trajektorii $\{N_t(\omega) \mid t\in(0,10~\mathrm{s})\}$. Průběh trajektorie graficky znázorněte.}\\
 
-Zákazníci přichází podle Poissonova procesu s intenzitou $ \lambda = 10~s^{-1} $. Počet příchozích zákazníků v intervalu $ [s,t] $ odpovídá Poissonovu rozdělení přírůstků $ N_t - N_s \sim \textrm{Poisson}(\lambda (t-s)) $, tedy počet zákazníků této úlohy je z rozdělení $ \textrm{Poisson}(100) $. Toto rozdělení je implementováno v knihovně SciPy jako \textit{poisson} a pro náhodný výběr obsahuje metodu \textit{rvs}, které jsme předali parametr \textit{mu=100}. Náhodný výběr z tohoto rozdělení vrátil hodnotu $  n=95 $. Časy jednotlivých příchodů zákazníků odpovídají rovnoměrnému rozdělení $ U(0,t) $. Tedy jsme udělali 95 náhodných výběrů z rozdělení $ U(0,10) $, pomocí třídy \textit{uniform} a metody \textit{rvs} s parametry \textit{scale=t, size=n}. Doba obsloužení těchto zákazníků je z rozdělení $\mathrm{Ga}(4,2)$ s parametry $ a = 4, p = 2 $. Gamma rozdělení je implementováno jako \textit{gamma} s metodou pro náhodný výběr \textit{rvs}. Parametry pro tuto metodu jsou \textit{shape} a \textit{scale}, v našem studijním textu používáme parametry, které odpovídají parametrizaci \textit{shape} a \textit{rate}. Pro $ \mathrm{Ga}(a,p) $ je \textit{shape} = p a \textit{rate} = a. Mezi \textit{scale} a \textit{rate} lze převádět pomocí vzorce $\mathrm{scale}=\frac{1}{\mathrm{rate}} $. Tedy po 95 náhodných výběrech z $\mathrm{Ga}(4,2)$ jsme dostali intervaly všech zákazníků v čase a výslednou trajektorii lze pozorovat na obrázku \ref{fig:traj}.
+Zákazníci přichází podle Poissonova procesu s intenzitou $ \lambda = 10~s^{-1} $. Počet příchozích zákazníků v intervalu $ [s,t] $ odpovídá Poissonovu rozdělení přírůstků $ N_t - N_s \sim \textrm{Poisson}(\lambda (t-s)) $, tedy počet zákazníků této úlohy je z rozdělení $ \textrm{Poisson}(100) $. Toto rozdělení je implementováno v knihovně SciPy jako \textit{poisson} a pro náhodný výběr obsahuje metodu \textit{rvs}, které jsme předali parametr \textit{mu=100}. Náhodný výběr z tohoto rozdělení vrátil hodnotu $  n=98 $. Časy jednotlivých příchodů zákazníků odpovídají rovnoměrnému rozdělení $ U(0,t) $. Tedy jsme udělali 95 náhodných výběrů z rozdělení $ U(0,10) $, pomocí třídy \textit{uniform} a metody \textit{rvs} s parametry \textit{scale=t, size=n}. Doba obsloužení těchto zákazníků je z rozdělení $\mathrm{Ga}(4,2)$ s parametry $ a = 4, p = 2 $. Gamma rozdělení je implementováno jako \textit{gamma} s metodou pro náhodný výběr \textit{rvs}. Parametry pro tuto metodu jsou \textit{shape} a \textit{scale}, v našem studijním textu používáme parametry, které odpovídají parametrizaci \textit{shape} a \textit{rate}. Pro $ \mathrm{Ga}(a,p) $ je \textit{shape} = p a \textit{rate} = a. Mezi \textit{scale} a \textit{rate} lze převádět pomocí vzorce $\mathrm{scale}=\frac{1}{\mathrm{rate}} $. Tedy po 98 náhodných výběrech z $\mathrm{Ga}(4,2)$ jsme dostali intervaly všech zákazníků v čase a výslednou trajektorii lze pozorovat na obrázku \ref{fig:traj}.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{img/traj.png} 
@@ -63,7 +63,7 @@ Zákazníci přichází podle Poissonova procesu s intenzitou $ \lambda = 10~s^{
 \section{Úloha č.2}
 \textit{Simulujte $n = 500$ nezávislých trajektorií pro $t\in(0,100)$. Na základě těchto simulací odhadněte rozdělení náhodné veličiny $N_{100}$.}\\
 
-V této úloze jsme využili kód z předchozí úlohy a simulovali jsme 500 trajektorií. Na základě hodnot z posledního časového kroku, tedy v $ t=100 $, jsme sestavili histogram a  odhad hustoty rozdělení pomocí jádrového odhadu, toto lze pozorovat na obrázku \ref{fig:histkde}.
+V této úloze jsme využili kód z předchozí úlohy a simulovali jsme 500 trajektorií. Na základě hodnot z posledního časového kroku, tedy v $ t=100 $, jsme sestavili histogram a odhad hustoty rozdělení pomocí jádrového odhadu, toto lze pozorovat na obrázku \ref{fig:histkde}. Dle zkoumané veličiny můžeme tvrdit, že pozorované rozdělení bude diskrétní a svojí podobou připomíná Poissonovo rozdělení s parametrem $ \lambda = 5 $.
 
 \begin{figure}
 \includegraphics[width=\columnwidth]{img/histkde.png} 
@@ -73,5 +73,23 @@ V této úloze jsme využili kód z předchozí úlohy a simulovali jsme 500 tra
 
 \section{Úloha č.3}
 \textit{Diskutujte, jaké je limitní rozdělení tohoto systému pro $t\to+\infty$. Pomocí vhodného testu otestujte na hladině významnosti 5~\%, zda výsledky simulace $N_{100}$ odpovídají tomuto rozdělení.}\\
+
+Zákazníci přicházejí dle Poissonova rozdělení s intenzitou $ \lambda = 10~s^{-1} $. Střední hodnota doby obsluhy odpovídá $ E~Ga(4,2) = 0.5 $, tedy $ \mu=\frac{1}{E Ga}=2 $, z přednášky 23 víme, že z dlouhodobého hlediska $  t \to +\infty $ má počet zákazníků v systému Poissonovo rozdělení s intenzitou $ \lambda/\mu $. Tedy pro tuto úlohu $ N_t \sim \textrm{Poisson}(10/2) $.
+
+Úlohou bylo otestovat, zda rozdělení výsledků simulace odpovídá teoretickému rozdělení. K tomuto jsme využili test dobré shody, v tomto případě se známými parametry. Za nulovou hypotézu jsme postavili rovnost pravděpodobností $ H_0: \bm{p} = \bm{p'} $, kde $ \bm{p} $ jsou teoretické pravděpodobnosti Poissonova procesu s intenzitou $ \lambda = 5 $ a $ \bm{p'} $ jsou relativní četnosti z 500 simulací $ N_{100} $, alternativní hypotézou byla nerovnost $ H_A: \bm{p}\neq \bm{p'} $. Překryv těchto pravděpodobností lze pozorovat na obrázku \ref{fig:histpoiss}. Testovou statistikou byla $ \chi^2 $ statistika. Jelikož naměřená data nesplňovala všude podmínku teoretických četností $ np_i \geq 5 $, tak jsme místo pravděpodobností $ P(N_{100} = 0) $ a $ P(N_{100} = 1) $ vybrali pouze $ P(N_{100} \leq 1) $ a pro všechna $ i > 10 $ nahradili $ P(N_{100} = i) $ za $ P(N_{100} > 10) = 1 - P(N_{100} \leq 10) $. Knihovna SciPy nabízí funkci \textit{chisquare}, která na vstupu bere naměřené a teoretické četnosti a vrátí testovou statistiku společně s p-hodnotou. Dle $ \hat{p} > \alpha $ nemůžeme zamítnout hypotézu shody.
+
+\begin{align*}
+\chi^2 &= 8.293\\
+\hat{p} &= 0.600\\
+\chi^2_{0.05,10} &= 18.307
+\end{align*}
+
+\begin{figure}
+\includegraphics[width=\columnwidth]{img/histpoiss.png} 
+\caption{Graf relativních pozorovaných četností $ N_{100} $ a pravděpodobnosti hodnot z rozdělení Poisson(5).}
+\label{fig:histpoiss} 
+\end{figure}
+
+
 
 \end{document}
